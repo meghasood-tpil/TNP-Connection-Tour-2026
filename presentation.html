@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T&P Connections Tour 2026 - Executive Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a1128;
+            --secondary: #5FC4E7;
+            --accent: #FF8C61;
+            --dark: #0a1128;
+            --light: #f4f6f9;
+            --success: #4caf50;
+            --salesforce-blue: #4A9EE0;
+            --gradient: linear-gradient(135deg, #7B2D8E 0%, #FF6B9D 50%, #FF8C61 100%);
+            --space-gradient: radial-gradient(ellipse at bottom, #1B2D5A 0%, #0a1128 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--light);
+            color: #333;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 17, 40, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-button {
+            background: var(--accent);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-button:hover {
+            background: #FF6B9D;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+            color: white;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            height: 3px;
+            background: var(--accent);
+            width: 0%;
+            z-index: 999;
+            transition: width 0.1s;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 120px 2rem 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--space-gradient);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Remove overlays - image has everything */
+        .hero::before,
+        .hero::after {
+            display: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 7rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+            letter-spacing: 0.05em;
+            animation: fadeInUp 1s ease;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero .subtitle {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            animation: fadeInUp 1s ease 0.2s backwards;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero .year {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 3rem;
+            letter-spacing: 0.1em;
+            animation: fadeInUp 1s ease 0.3s backwards;
+            text-shadow: 0 0 30px rgba(95, 196, 231, 0.5);
+        }
+
+        .hero .tagline {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            animation: fadeInUp 1s ease 0.4s backwards;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            margin-top: 2rem;
+        }
+
+        .hero .tagline .highlight {
+            color: var(--secondary);
+            text-shadow: 0 0 20px rgba(95, 196, 231, 0.6);
+        }
+
+        .stats-grid {
+            display: none;
+        }
+
+        .stat-card {
+            background: rgba(10, 31, 77, 0.4);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(95, 196, 231, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(95, 196, 231, 0.5);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.95;
+            color: white;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: white;
+        }
+
+        .content-section:nth-child(even) {
+            background: var(--light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Objectives Grid */
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .objective-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .objective-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .objective-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(123, 45, 142, 0.3);
+        }
+
+        .objective-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .objective-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin-top: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--secondary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .timeline-date {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-location {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-badge {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px rgba(95, 196, 231, 0.3);
+        }
+
+        /* Strategy Pillars */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pillar-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .pillar-header {
+            background: var(--gradient);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .pillar-number {
+            font-size: 3rem;
+            font-weight: 800;
+            opacity: 0.3;
+            margin-bottom: 0.5rem;
+        }
+
+        .pillar-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pillar-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .pillar-content {
+            padding: 2rem;
+        }
+
+        .pillar-content ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .pillar-content li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .pillar-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        /* Roles Section */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .role-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid var(--secondary);
+        }
+
+        .role-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .role-list {
+            list-style: none;
+        }
+
+        .role-list li {
+            padding: 0.8rem 0;
+            padding-left: 1.8rem;
+            position: relative;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .role-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .role-ask {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(0, 161, 224, 0.05);
+            border-left: 4px solid var(--secondary);
+            border-radius: 8px;
+        }
+
+        .role-ask strong {
+            color: var(--secondary);
+        }
+
+        /* Metrics Section */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .metric-value {
+            font-size: 4rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .metric-label {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(123, 45, 142, 0.3);
+        }
+
+        .team-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .team-role {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--space-gradient);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient);
+            opacity: 0.2;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            border-color: var(--secondary);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                background-size: cover;
+                background-position: center bottom;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+            }
+
+            .timeline-marker {
+                left: 0;
+                transform: translateX(0);
+            }
+
+            nav .nav-links {
+                display: none;
+            }
+
+            .nav-button {
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">T&P Tour 2026</div>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#strategy">Strategy</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#roles">Partnership</a></li>
+                <li><a href="#metrics">Success</a></li>
+            </ul>
+            <a href="https://docs.google.com/spreadsheets/d/1npn9ETMSGcWJeIXKCaSt7_zq4swuYeC9z_RwNUnokCk/edit?gid=1058634063#gid=1058634063" target="_blank" rel="noopener noreferrer" class="nav-button">
+                📊 Project Plan
+            </a>
+        </div>
+    </nav>
+
+    <div class="progress-bar"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>T&P</h1>
+            <p class="subtitle">CONNECTIONS TOUR</p>
+            <p class="year">2026</p>
+            <p class="tagline">WELCOME TO THE <span class="highlight">AGENTIC</span> ERA</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">2,600+</div>
+                    <div class="stat-label">Tech Professionals</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Hub Locations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Days of Innovation</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Target Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="content-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">Strategic Initiative</span>
+                <h2>Tour Overview</h2>
+                <p class="section-description">
+                    The T&P Connections Tour is our annual TPIL initiative that brings together employees across all levels to experience our strategic priorities and latest technological advancements in a meaningful way. It creates space for teams to connect, collaborate, and learn from one another—helping us build stronger relationships and drive innovation across the organization.
+                </p>
+            </div>
+
+            <div class="objectives-grid">
+                <div class="objective-card fade-in">
+                    <div class="objective-icon">🎯</div>
+                    <h3>V2MOM Alignment</h3>
+                    <p>Accelerate T&P Strategy Adoption aligned with organizational vision and values</p>
+                </div>
+                <div class="objective-card fade-in">
+                    <div class="objective-icon">💡</div>
+                    <h3>Hands-On Learning</h3>
+                    <p>Deliver role-based, practical learning experiences tailored to Engineering, EM, and PM roles</p>
+                </div>
+                <div class="objective-card fade-in">
+                    <div class="objective-icon">🤝</div>
+                    <h3>Leadership Connections</h3>
+                    <p>Strengthen cross-team collaboration and build meaningful leadership relationships</p>
+                </div>
+                <div class="objective-card fade-in">
+                    <div class="objective-icon">🌐</div>
+                    <h3>Hybrid Reach</h3>
+                    <p>Blend in-person energy with virtual accessibility for maximum engagement</p>
+                </div>
+                <div class="objective-card fade-in">
+                    <div class="objective-icon">📍</div>
+                    <h3>Hub Experiences</h3>
+                    <p>Create localized, high-impact experiences in key technology hubs</p>
+                </div>
+                <div class="objective-card fade-in">
+                    <div class="objective-icon">🤖</div>
+                    <h3>Agentic Era Focus</h3>
+                    <p>Explore AI Agents, Autonomy, and Intent-Driven Technology</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategy Pillars Section -->
+    <section id="strategy" class="content-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">FY27 Focus Areas</span>
+                <h2>Strategic Content Pillars</h2>
+                <p class="section-description">
+                    Three core pillars aligned to FY27 T&P Strategy, delivering focused learning content across the organization
+                </p>
+            </div>
+
+            <div class="pillars-grid">
+                <div class="pillar-card fade-in">
+                    <div class="pillar-header">
+                        <div class="pillar-number">01</div>
+                        <div class="pillar-title">TRUST</div>
+                        <div class="pillar-subtitle">Security, Availability & Quality</div>
+                    </div>
+                    <div class="pillar-content">
+                        <p><strong>Building the Capabilities to Detect Faster, Resolve Stronger, and Deliver Securely</strong></p>
+                        <ul>
+                            <li>Paved Path development practices</li>
+                            <li>Shipyard & Safe Release processes</li>
+                            <li>Security-first architecture</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pillar-card fade-in">
+                    <div class="pillar-header">
+                        <div class="pillar-number">02</div>
+                        <div class="pillar-title">AI Productivity</div>
+                        <div class="pillar-subtitle">Innovation in Development</div>
+                    </div>
+                    <div class="pillar-content">
+                        <p><strong>Mastering the Agentic SDLC</strong></p>
+                        <ul>
+                            <li>Intent Driven Development</li>
+                            <li>Role-specific content for Eng, EM & PM</li>
+                            <li>AI-powered workflows</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pillar-card fade-in">
+                    <div class="pillar-header">
+                        <div class="pillar-number">03</div>
+                        <div class="pillar-title">Unified Product</div>
+                        <div class="pillar-subtitle">Platform Enablement</div>
+                    </div>
+                    <div class="pillar-content">
+                        <p><strong>Deeply Unified Product Enablement</strong></p>
+                        <ul>
+                            <li>Agent Script & Agent Graph</li>
+                            <li>Data Cloud capabilities</li>
+                            <li>Integrated platform experiences</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="content-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">October 2026</span>
+                <h2>Tour Schedule</h2>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">October 5, 2026</div>
+                        <div class="timeline-location">Hyderabad Office</div>
+                        <p><strong>Road2Tour:</strong> Hands-on workshops by visiting SMEs. Three parallel sessions in training rooms & social lounge (50 participant capacity per session).</p>
+                        <span class="timeline-badge">In-Person + Virtual</span>
+                        <span class="timeline-badge">Live Streamed</span>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">October 6, 2026</div>
+                        <div class="timeline-location">Hyderabad HITEX</div>
+                        <p><strong>Tour Day:</strong> Immersive experience with keynotes, interactive demo booths, breakout sessions, and "Two to Tango" leader networking. Adapted content for offline delivery.</p>
+                        <span class="timeline-badge">In-Person Only</span>
+                        <span class="timeline-badge">No WiFi</span>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">October 7, 2026</div>
+                        <div class="timeline-location">✈️ Travel Day</div>
+                        <p>Team transition from Hyderabad to Bengaluru</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">October 8, 2026</div>
+                        <div class="timeline-location">Bengaluru Office</div>
+                        <p><strong>Road2Tour:</strong> Hands-on workshops by visiting SMEs. Two parallel sessions in training rooms (40 participant capacity per session).</p>
+                        <span class="timeline-badge">In-Person + Virtual</span>
+                        <span class="timeline-badge">Live Streamed</span>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">October 9, 2026</div>
+                        <div class="timeline-location">Bengaluru BIEC</div>
+                        <p><strong>Tour Day:</strong> Immersive experience with keynotes, interactive demo booths, breakout sessions, and "Two to Tango" leader networking.</p>
+                        <span class="timeline-badge">In-Person Only</span>
+                        <span class="timeline-badge">No WiFi</span>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date">October 14, 2026</div>
+                        <div class="timeline-location">Singapore Office</div>
+                        <p><strong>Tour Day:</strong> Main stage keynotes, sessions, and networking. Full in-person experience for APAC team.</p>
+                        <span class="timeline-badge">In-Person Only</span>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Roles Section -->
+    <section id="roles" class="content-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">RADX Partnership</span>
+                <h2>Roles & Expectations</h2>
+                <p class="section-description">
+                    Collaborative partnership model to ensure high-quality, engaging content and strong leadership presence
+                </p>
+            </div>
+
+            <div class="roles-grid">
+                <div class="role-card fade-in">
+                    <div class="role-title">Executive Sponsors</div>
+                    <p style="color: #666; margin-bottom: 1.5rem;">Help drive visibility, credibility, and leadership engagement across the tour</p>
+                    <ul class="role-list">
+                        <li>Actively promote the tour within their organizations and networks</li>
+                        <li>Attend tour stops to show visible support</li>
+                        <li>Engage in leadership networking sessions</li>
+                    </ul>
+                    <div class="role-ask">
+                        <strong>Ask:</strong> Sponsor Hyderabad & Bengaluru tour stops & help champion the overall program
+                    </div>
+                </div>
+
+                <div class="role-card fade-in">
+                    <div class="role-title">Subject Matter Experts</div>
+                    <p style="color: #666; margin-bottom: 1.5rem;">Play a critical role in shaping high-quality, relevant content for the tour</p>
+                    <ul class="role-list">
+                        <li>Partner to co-create session content aligned to tour objectives</li>
+                        <li>Pilot content ahead of the tour, incorporating feedback</li>
+                        <li>Ensure all materials are finalized and ready by June 5</li>
+                    </ul>
+                    <div class="role-ask">
+                        <strong>Ask:</strong> Identify SMEs to collaborate on shared content
+                    </div>
+                </div>
+
+                <div class="role-card fade-in">
+                    <div class="role-title">Speakers</div>
+                    <p style="color: #666; margin-bottom: 1.5rem;">Key to delivering an engaging and consistent experience across hubs</p>
+                    <ul class="role-list">
+                        <li>Commit to presenting at a minimum of two tour stops</li>
+                        <li>Deliver content that is interactive, clear, and tailored to the audience</li>
+                        <li>Incorporate feedback from early sessions to continuously improve delivery</li>
+                    </ul>
+                    <div class="role-ask">
+                        <strong>Ask:</strong> Identify engaging session & booth speakers to join us at relevant Tour stops
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Metrics Section -->
+    <section id="metrics" class="content-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">Measuring Impact</span>
+                <h2>Success Metrics</h2>
+                <p class="section-description">
+                    Clear, quantifiable goals to measure the impact and effectiveness of the tour
+                </p>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card fade-in">
+                    <div class="metric-value">2,000+</div>
+                    <div class="metric-label">Unique Attendees Across All Locations</div>
+                </div>
+
+                <div class="metric-card fade-in">
+                    <div class="metric-value">85%</div>
+                    <div class="metric-label">Customer Satisfaction Score</div>
+                </div>
+
+                <div class="metric-card fade-in">
+                    <div class="metric-value">85%</div>
+                    <div class="metric-label">Reported Increase in Knowledge, Network & Connection</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">TPIL Tour Team</span>
+                <h2>Meet the Team</h2>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card fade-in">
+                    <div class="team-avatar">AL</div>
+                    <div class="team-name">Andrea Leszek</div>
+                    <div class="team-role">Executive Sponsor</div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-avatar">LM</div>
+                    <div class="team-name">Lisa Marshall</div>
+                    <div class="team-role">Executive Sponsor</div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-avatar">SU</div>
+                    <div class="team-name">Sara Umeda</div>
+                    <div class="team-role">Program Manager</div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-avatar">SS</div>
+                    <div class="team-name">Sara Schulman</div>
+                    <div class="team-role">Program Advisor</div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-avatar">LV</div>
+                    <div class="team-name">Laura Vander Zalm</div>
+                    <div class="team-role">Content Lead</div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-avatar">CM</div>
+                    <div class="team-name">Caitlin Mann</div>
+                    <div class="team-role">Content Advisor</div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-avatar">PK</div>
+                    <div class="team-name">Prabhjot Singh Khandooja</div>
+                    <div class="team-role">APAC Lead</div>
+                </div>
+
+                <div class="team-card fade-in">
+                    <div class="team-avatar">BJ</div>
+                    <div class="team-name">Bobby Joy</div>
+                    <div class="team-role">APAC Advisor</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Join the Journey?</h2>
+            <p>Let's build the future of technology together in the Agentic Era</p>
+            <div class="cta-buttons">
+                <a href="#roles" class="btn btn-primary">Get Involved</a>
+                <a href="#timeline" class="btn btn-secondary">View Schedule</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.querySelector('.progress-bar').style.width = scrolled + '%';
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
